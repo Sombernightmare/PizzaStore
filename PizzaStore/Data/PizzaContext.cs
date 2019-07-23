@@ -19,7 +19,7 @@ namespace PizzaStore.Data
 
         public DbSet<OrderItem> OrderItems { get; set; }
 
-        public DbSet<OrderItemDetail> OrderItemDetails { get; set; }
+        public DbSet<InventoryItem> InventoryItems { get; set; }
 
     }
 

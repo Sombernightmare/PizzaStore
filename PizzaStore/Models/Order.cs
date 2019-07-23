@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace PizzaStore.Models
 {
@@ -14,13 +13,17 @@ namespace PizzaStore.Models
     {
 
         public int ID { get; set; }
+
+        [Required]
         public OrderType OrderType { get; set; }
         public Employee Driver { get; set; }
-        public DateTime DriverOut { get; set; }
-        public DateTime DriverIn { get; set; }
-        public decimal Price { get; set; }
+        public DateTime? DriverOut { get; set; }
+        public DateTime? DriverIn { get; set; }
+
+        [Required]
         public Customer Customer { get; set; }
 
+        [Required]
         IEnumerable<OrderItem> OrderItems { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PizzaStore.Data;
 using PizzaStore.Models;
+using PizzaStore.ViewModels;
 
 namespace PizzaStore.Controllers
 {
@@ -46,7 +47,20 @@ namespace PizzaStore.Controllers
         // GET: Orders/Create
         public IActionResult Create()
         {
-            return View();
+            OrderAddViewModel vm = new OrderAddViewModel();
+            List<SelectListItem> customerList = new List<SelectListItem>();
+
+            foreach (Customer customer in _context.Customers)
+            {
+                SelectListItem sli = new SelectListItem();
+                sli.Text = customer.FirstName + " " + customer.LastName;
+                sli.Value = customer.ID.ToString();
+                customerList.Add(sli);
+            }
+
+            vm.CustomerList = customerList;
+
+            return View(vm);
         }
 
         // POST: Orders/Create
